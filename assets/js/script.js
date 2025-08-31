@@ -5,15 +5,14 @@ togglebtn.addEventListener('click', () => {
     navbar.classList.toggle("active-navbar");
 })
 
-
 let itemList = document.querySelector(".item-list");
 let totalPrice = document.querySelector("#total-price");
+let cardList = document.querySelector(".card-list")
 let form = document.querySelector("form");
 let userName = document.querySelector("#username");
 let userEmail = document.querySelector("#email")
 let userPhoneNumber = document.querySelector("#number")
 
-let total = 0;
 let cart = [];
 
 const services = [
@@ -32,7 +31,7 @@ services.forEach((item, index) => {
                                 <p> ${item.name} </p>
                                 <p>₹${item.price}</p>
                             </div>
-                            <button class="add-btn" data-added="true" onclick=addToCart(${index})>add item <i class="ri-shopping-cart-2-line"></i></button>
+                            <button class="add-btn" data-added="false" onclick=addToCart(${index})>add item <i class="ri-shopping-cart-2-line"></i></button>
                         </div>`;
     itemList.innerHTML = clutter
 })
@@ -42,6 +41,9 @@ function addToCart(index) {
     let clickButton = buttons[index]
     let isAddBuuton = clickButton.dataset.added === "true";
     if (!isAddBuuton) {
+        // push data my add cart 
+        cart.push(services[index]);
+       console.log("after cart push plz check it",cart);
         clickButton.dataset.added = "true";
         clickButton.style.backgroundColor = "#fab1a4ff";
         clickButton.style.color = "#ec3d1eff";
@@ -50,8 +52,7 @@ function addToCart(index) {
     }
     else {
         // filter out remove this data.....
-
-
+        cart = cart.filter((item) => item.name !== services[index].name)
         clickButton.dataset.added = "false";
         clickButton.style.backgroundColor = "#c4e4f8",
             clickButton.style.color = "var(--text-bg-color)",
@@ -61,13 +62,33 @@ function addToCart(index) {
     }
     updateCart();
 }
+
 function removeCart(item) {
-    console.log(`this cart is remove `);
+
     updateCart();
 };
-
+let noCartItems = document.querySelector(".no-cart-items")
 function updateCart() {
-    console.log("your cart is up to date");
+    let clutter = '';
+    let total = 0;
+    if (cart.length === 0) {
+        noCartItems.style.display = "block";
+    }
+    else if (cart.length > 0) {
+        noCartItems.style.display = "none";
+        cart.forEach((val, index) => {
+            const { name, price } = val;
+            total += price;
+            clutter += `<tr>
+         <td>${index + 1}</td>
+        <td>${name}</td>
+         <td>${price}</td>
+                 </tr>
+                        `
+        })
+    }
+    totalPrice.innerHTML = `${total}`;
+    cardList.innerHTML = clutter;
 };
 
 // submit form logic here

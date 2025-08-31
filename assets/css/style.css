@@ -408,16 +408,66 @@ footer {
     cursor: pointer;
 }
 
+.no-cart-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.no-cart-items i {
+    font-size: 100px;
+
+}
+
+.add-item-container h2 {
+    margin-top: 20px;
+}
+
+/* table style  */
+table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #d6c6c6;
+    padding: 9px;
+    text-align: center;
+    background-color: #e8f0f6;
+
+}
+
+th {
+    background-color: #dbd6d6;
+}
+
 @media only screen and (max-width:900px) {
     .serives-section .container {
         flex-direction: column !important;
         align-items: center;
         justify-content: center;
     }
+
     .quality-description-section .container .flex {
         flex-wrap: wrap;
     }
+
+    .prices-part,
+    .delivery-part,
+    .quick-support,
+    .premium-services-part {
+        width: 20rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin: auto;
+    }
 }
+
 
 
 
