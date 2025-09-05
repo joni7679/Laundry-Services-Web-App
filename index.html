@@ -7,7 +7,9 @@
     <title>Laundry Services Web App</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="shortcut icon" href="https://png.pngtree.com/png-clipart/20230923/original/pngtree-laundry-logo-vector-dry-water-icon-vector-png-image_12530252.png" type="image/x-icon">
+    <link rel="shortcut icon"
+        href="https://png.pngtree.com/png-clipart/20230923/original/pngtree-laundry-logo-vector-dry-water-icon-vector-png-image_12530252.png"
+        type="image/x-icon">
 </head>
 
 <body>
@@ -95,9 +97,6 @@
                         <p>click on the add to cart button to add the services to your cart</p>
                     </div>
                     <div class="item-list">
-
-
-
                     </div>
                 </div>
                 <div>
@@ -111,17 +110,15 @@
                                     <th>price</th>
                                 </tr>
                                 <tbody class="card-list">
-                                    
+
                                 </tbody>
                             </table>
-
                             <div class="no-cart-items">
                                 <i class="ri-information-line"></i>
                                 <p> no items added</p>
                                 <span>add to items the cart form the serives bar</span>
                             </div>
-
-                            <h2>total ammount :<span id="total-price"></span> </h2>
+                            <h2>total ammount :<span id="total-price">0</span> </h2>
                         </div>
                     </div>
                     <div class="serives-form">
@@ -131,20 +128,25 @@
                                 <label for="">Full Name</label>
                                 <input type="text" name="username" id="username"
                                     placeholder="Enter Your user name here">
+                                <span class="error" id="user-error-sms"></span>
                             </div>
                             <div class="flex gap-5">
                                 <div class="input-box">
                                     <label for="">Email id</label>
                                     <input type="email" name="email" id="email" placeholder="Enter Your email id here">
+                                    <span class="error" id="email-error-sms"></span>
                                 </div>
                                 <div class="input-box">
                                     <label for="">Phone Number</label>
                                     <input type="number" name="number" id="number" placeholder="Enter Your number here">
+                                    <span class="error" id="number-error-sms"></span>
                                 </div>
                             </div>
-
                             <button id="book-btn">book now</button>
+                            <p id="loading-sms">plase wait... sending....</p>
                         </form>
+                        <p id="book-sms"></p>
+                        <p id="error-product"></p>
                     </div>
                 </div>
             </div>
@@ -238,6 +240,15 @@
         </footer>
         <!-- footer section end here -->
     </main>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init({
+                publicKey: "ExPnBFMVksHWTsatH",
+            });
+        })();
+    </script>
     <script src="./assets/js/script.js" defer></script>
 </body>
 

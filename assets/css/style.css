@@ -24,6 +24,11 @@ body {
     overflow-x: hidden;
 }
 
+.error {
+    color: red;
+    margin-top: 20px;
+    text-transform: capitalize;
+}
 
 
 .container {
@@ -166,6 +171,7 @@ header .nav-center ul li a {
 .serives-part p,
 .customer-part p {
     font-weight: 600;
+    margin-top: 20px;
 }
 
 .serives-section {
@@ -408,12 +414,36 @@ footer {
     cursor: pointer;
 }
 
+#book-sms {
+    color: rgb(22, 238, 22);
+    text-transform: capitalize;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#loading-sms {
+    color: rgb(22, 238, 22);
+    text-transform: capitalize;
+    margin-top: 20px;
+    text-align: center;
+    display: none;
+}
+
+#error-product {
+    color: rgb(254, 67, 25);
+    text-transform: capitalize;
+    margin-top: 20px;
+    text-align: center;
+}
+
 .no-cart-items {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
+
+
 
 .no-cart-items i {
     font-size: 100px;
@@ -467,9 +497,6 @@ th {
         margin: auto;
     }
 }
-
-
-
 
 @media only screen and (max-width:782px) {
     footer .container .flex {
