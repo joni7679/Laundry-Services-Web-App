@@ -82,7 +82,7 @@ function updateCart() {
     cardList.innerHTML = clutter;
 };
 
-let form = document.querySelector("form");
+let form = document.querySelector("#book-form");
 let userName = document.querySelector("#username");
 let userEmail = document.querySelector("#email");
 let userPhoneNumber = document.querySelector("#number");
@@ -131,11 +131,22 @@ form.addEventListener("submit", (e) => {
     else if (cart.length > 0) {
         errorProductSms.textContent = "";
         if (isValid) {
-             loadingSms.style.display = "block";
+            loadingSms.style.display = "block";
             console.log("isValid", isValid);
             emailjs.sendForm("service_ooedkzt", "template_d4x447i", form, "ExPnBFMVksHWTsatH").then(() => {
                 loadingSms.style.display = "none";
-                bookSms.textContent = "Emil has send successfully";
+                bookSms.textContent = "Email has send successfully..";
+                form.reset();
+                cart = [];
+                cardList.innerHTML = "";
+                totalPrice.innerHTML = "";
+                let allButtons = document.querySelectorAll(".add-btn");
+                allButtons.forEach((button) => {
+                    button.dataset.added = "false";
+                    button.style.backgroundColor = "#c4e4f8",
+                    button.style.color = "var(--text-bg-color)",
+                    button.innerHTML = `Add Item <i class="ri-shopping-cart-2-line"></i>`;
+                })
             }).catch((error) => {
                 console.log(error, "somthing is wrong plz try agin later...");
             })
